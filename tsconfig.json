@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "lib": [
+      "dom",
+      "ES2019"
+    ],
+    "moduleResolution": "Node",
+    "module": "ESNext",
+    "target": "ES2020",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "jsx": "react",
+    "skipLibCheck": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "src",
+    "./env.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
