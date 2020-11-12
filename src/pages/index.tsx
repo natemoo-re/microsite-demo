@@ -1,24 +1,14 @@
 import React from "react";
-import { Head } from "microsite/head";
+import { definePage } from "microsite/page";
+import { Head, seo } from "microsite/head";
 
-import Idle from "@/components/Idle/index";
-import Interaction from "@/components/Interaction/index";
-import Visible from "@/components/Visible/index";
-import Static from "@/components/Static/index";
-
-export const getStaticProps = async () => {
-  return {
-    props: {
-      renderedAt: new Date().toLocaleString().replace(", ", " at "),
-    },
-  };
-};
+import { Idle, Interaction, Visible, Static } from "../components";
 
 const Index = ({ renderedAt }) => {
   return (
     <>
       <Head>
-        <title>Microsite Demo</title>
+        <seo.title>Microsite Demo</seo.title>
       </Head>
 
       <main>
@@ -34,4 +24,12 @@ const Index = ({ renderedAt }) => {
   );
 };
 
-export default Index;
+export default definePage(Index, {
+  async getStaticProps() {
+    return {
+      props: {
+        renderedAt: new Date().toLocaleString().replace(", ", " at "),
+      },
+    };
+  },
+});

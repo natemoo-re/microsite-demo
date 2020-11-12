@@ -1,14 +1,14 @@
 import React, { FC } from "react";
 import { definePage } from "microsite/page";
-import { Head } from "microsite/head";
+import { Head, seo } from "microsite/head";
 
-import Interaction from "@/components/Interaction/index";
+import { Interaction } from "../../components";
 
 const Post: FC<{ id: string }> = ({ id }) => {
   return (
     <>
       <Head>
-        <title>Blog | {id}</title>
+        <seo.title>Blog | {id}</seo.title>
       </Head>
 
       <main>
