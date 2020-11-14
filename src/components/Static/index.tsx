@@ -1,6 +1,8 @@
-import React, { FC } from "react";
+import { h, FunctionalComponent } from "preact";
 
-const Static: FC<{ renderedAt: string }> = ({ renderedAt }) => {
+const Static: FunctionalComponent<{ renderedAt: string }> = ({
+  renderedAt,
+}) => {
   return (
     <section>
       <h3>Page rendered on {renderedAt}</h3>

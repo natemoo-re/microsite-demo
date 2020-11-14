@@ -1,10 +1,10 @@
-import React, { FC } from "react";
+import { h, FunctionalComponent } from "preact";
 import { withHydrate } from "microsite/hydrate";
 import Counter from "../Counter";
 
 import css from "./index.module.css";
 
-const Visible: FC<any> = (props: any) => {
+const Visible: FunctionalComponent<any> = (props: any) => {
   let message = "Hydrated when visible";
   if (Object.keys(props).length > 0) message += " (with props)";
 

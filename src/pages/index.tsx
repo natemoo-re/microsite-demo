@@ -1,10 +1,13 @@
-import React from "react";
+import { h, Fragment, FunctionalComponent } from "preact";
 import { definePage } from "microsite/page";
 import { Head, seo } from "microsite/head";
 
-import { Idle, Interaction, Visible, Static } from "../components";
+import Idle from "@/components/Idle";
+import Interaction from "@/components/Interaction";
+import Visible from "@/components/Visible";
+import Static from "@/components/Static";
 
-const Index = ({ renderedAt }) => {
+const Index: FunctionalComponent<any> = ({ renderedAt }) => {
   return (
     <>
       <Head>

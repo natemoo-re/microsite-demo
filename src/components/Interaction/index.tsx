@@ -1,10 +1,10 @@
-import React, { FC } from "react";
+import { h, FunctionalComponent } from "preact";
 import { withHydrate } from "microsite/hydrate";
 import Counter from "../Counter";
 
 import css from "./index.module.css";
 
-const Interaction: FC<any> = (props: any) => {
+const Interaction: FunctionalComponent<any> = (props: any) => {
   let message = "Hydrated on user interaction";
   if (Object.keys(props).length > 0) message += " (with props)";
 

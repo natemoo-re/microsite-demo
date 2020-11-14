@@ -1,7 +1,8 @@
-import React, { FC, useState } from "react";
+import { h, FunctionalComponent } from "preact";
+import { useState } from "preact/hooks";
 import css from "./index.module.css";
 
-const Counter: FC<any> = ({ initialCount = 0 }) => {
+const Counter: FunctionalComponent<any> = ({ initialCount = 0 }) => {
   const [count, setCount] = useState(initialCount);
 
   return (
