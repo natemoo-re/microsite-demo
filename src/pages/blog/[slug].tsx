@@ -1,4 +1,4 @@
-import { h, Fragment, FunctionalComponent } from "preact";
+import { FunctionalComponent } from "preact";
 import { definePage } from "microsite/page";
 import { Head, seo } from "microsite/head";
 

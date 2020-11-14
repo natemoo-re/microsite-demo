@@ -1,4 +1,4 @@
-import { h, FunctionalComponent } from "preact";
+import { FunctionalComponent } from "preact";
 
 const Static: FunctionalComponent<{ renderedAt: string }> = ({
   renderedAt,

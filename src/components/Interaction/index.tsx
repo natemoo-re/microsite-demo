@@ -1,4 +1,4 @@
-import { h, FunctionalComponent } from "preact";
+import { FunctionalComponent } from "preact";
 import { withHydrate } from "microsite/hydrate";
 import Counter from "../Counter";
 
