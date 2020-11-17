@@ -6,6 +6,7 @@ import Idle from "@/components/Idle";
 import Interaction from "@/components/Interaction";
 import Visible from "@/components/Visible";
 import Static from "@/components/Static";
+import Clock from "@/components/Clock";
 
 const Index: FunctionalComponent<any> = ({ renderedAt }) => {
   return (
@@ -15,7 +16,9 @@ const Index: FunctionalComponent<any> = ({ renderedAt }) => {
       </Head>
 
       <main>
-        <Static renderedAt={renderedAt} />
+        <Static renderedAt={renderedAt}>
+          <Clock initialDate={renderedAt} />
+        </Static>
         <Idle />
         <Interaction />
         <Visible />

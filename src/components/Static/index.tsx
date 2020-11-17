@@ -2,10 +2,14 @@ import { FunctionalComponent } from "preact";
 
 const Static: FunctionalComponent<{ renderedAt: string }> = ({
   renderedAt,
+  children,
 }) => {
   return (
     <section>
       <h3>Page rendered on {renderedAt}</h3>
+
+      {children}
+
       <p>
         <a href="https://github.com/natemoo-re/microsite">Microsite</a> is an
         opinionated static site generator tailored for performance.
