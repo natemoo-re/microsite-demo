@@ -2,7 +2,8 @@ import { FunctionalComponent } from "preact";
 import { definePage } from "microsite/page";
 import { Head, seo } from "microsite/head";
 
-import fs from "fs";
+import Idle from "@/components/Idle";
+
 import path from "path";
 import matter from "gray-matter";
 import remark from "remark";
@@ -20,6 +21,8 @@ const Post: FunctionalComponent<{ content: string; data: any }> = ({
 
       <main>
         <article dangerouslySetInnerHTML={{ __html: content }} />
+
+        <Idle />
       </main>
     </>
   );
@@ -28,7 +31,7 @@ const Post: FunctionalComponent<{ content: string; data: any }> = ({
 export default definePage(Post, {
   path: "/blog/[slug]",
   async getStaticProps({ params }) {
-    const page = getPage(params.slug);
+    const page = await getPage(params.slug);
     const content = await markdownToHtml(page.content || "");
 
     return {
@@ -39,14 +42,14 @@ export default definePage(Post, {
     };
   },
   async getStaticPaths() {
+    const files = await fetch(
+      "https://api.github.com/repos/natemoo-re/microsite-datasource/contents/blog"
+    ).then((res) => res.json());
+
     return {
-      paths: fs.readdirSync(pagesDirectory).map((filename) => {
-        return {
-          params: {
-            slug: path.basename(filename, path.extname(filename)),
-          },
-        };
-      }),
+      paths: files.map((file) => ({
+        params: { slug: path.basename(file.name, ".md") },
+      })),
     };
   },
 });
@@ -56,10 +59,9 @@ async function markdownToHtml(markdown) {
   return result.toString();
 }
 
-const pagesDirectory = path.join(process.cwd(), "content");
-
-const getPage = (slug) => {
-  const fullPath = path.join(pagesDirectory, `${slug}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
+const getPage = async (slug) => {
+  const fileContents = await fetch(
+    `https://raw.githubusercontent.com/natemoo-re/microsite-datasource/main/blog/${slug}.md`
+  ).then((res) => res.text());
   return matter(fileContents);
 };

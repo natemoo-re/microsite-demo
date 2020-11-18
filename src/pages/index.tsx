@@ -7,6 +7,7 @@ import Interaction from "@/components/Interaction";
 import Visible from "@/components/Visible";
 import Static from "@/components/Static";
 import Clock from "@/components/Clock";
+import LinkedCounters from "@/components/LinkedCounters";
 
 const Index: FunctionalComponent<any> = ({ renderedAt }) => {
   return (
@@ -22,6 +23,8 @@ const Index: FunctionalComponent<any> = ({ renderedAt }) => {
         <Idle />
         <Interaction />
         <Visible />
+
+        <LinkedCounters />
 
         <Interaction initialCount={10} />
         <Visible initialCount={10} />
